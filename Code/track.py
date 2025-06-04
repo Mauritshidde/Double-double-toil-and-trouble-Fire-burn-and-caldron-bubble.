@@ -1,10 +1,7 @@
 import math as m
 
-f = open("data/test.ascii")
-start = f.readline()
-
-def get_translated_position(f): # Translate the x and y coordinates of the ball into a single direction, give as input the openend file
-    x = f.readline() # read the first line to descard it because it doesn't contain usefull data
+def get_translated_position(d): # Translate the x and y coordinates of the ball into a single direction, give as input the openend file
+    x = d.readline()
     positions = []
     while x:
         data = x.split(",")
@@ -15,7 +12,7 @@ def get_translated_position(f): # Translate the x and y coordinates of the ball 
         # get the distance using Pythagoras
         distance = m.sqrt(m.pow(data[2], 2) + m.pow(data[3], 2))
         positions.append([data[1], distance])
-        x = f.readline()
+        x = d.readline()
     return positions
 
 def get_pixels_per_second(pos): # geef de getransleerde positie in enkele richting mee aan de functie
@@ -27,9 +24,19 @@ def get_pixels_per_second(pos): # geef de getransleerde positie in enkele richti
         velocities.append([[pos[i][0], pos[i+1][0]], velocity])
     return velocities
 
-pos = get_translated_position(f)
+# get start values
+folder = "Meeting 1"
+data = open("data/" + folder + "/data.ascii")
+start = data.readline() # remove first non date line
+
+length_file = open("data/" + folder + "/lengte.ascii")
+start = length_file.readline() # remove first non date line
+
+# get the length and close the file
+length = length_file.readline()
+length_file.close()
+
+pos = get_translated_position(data)
 velocities = get_pixels_per_second(pos)
 
-for i in velocities:
-    print(i)
-f.close()
+data.close()
