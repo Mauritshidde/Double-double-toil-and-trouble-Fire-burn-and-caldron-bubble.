@@ -32,11 +32,35 @@ def get_pixels_per_second(pos): # geef de getransleerde positie in enkele richti
         velocities.append([[pos[i][0], pos[i+1][0]], velocity])
     return velocities
 
-def get_cm_per_pixel(data): # calulate how many cm a pixel is
+def get_pixels_per_second_suppresed(pos, steps):
+    velocities = []
+    i = steps
+    for j in range(len(pos) - 1 - 2 * steps):
+        delta_y = abs(pos[i-steps][2] - pos[i+steps][2])
+        delta_x = abs(pos[i-steps][1] - pos[i+steps][1])
+        delta_t = abs(pos[i-steps][0] - pos[i+steps][0])
+        velocity = m.sqrt(delta_x**2 + delta_y**2)/delta_t
+        velocities.append([[pos[i][0], pos[i+1][0]], velocity])
+        i+=1
+    return velocities
+
+def get_distance_per_time_suppresed(pos, steps):
+    velocities = []
+    i = steps
+    for j in range(len(pos) - 1 - 2 * steps):
+        delta_y = abs(pos[i-steps][2] - pos[i+steps][2])
+        delta_x = abs(pos[i-steps][1] - pos[i+steps][1])
+        delta_t = pos[i-steps][0] + pos[i+steps][0]
+        distance = m.sqrt(delta_x**2 + delta_y**2)
+        velocities.append([delta_t/2, distance])
+        i+=1
+    return velocities
+
+def get_cm_per_pixel(data, length): # calulate how many cm a pixel is
     delta_x = data[0][1] - data[-1][1]
     delta_y = data[0][2] - data[-1][2]
     tot_dist_pixels = m.sqrt(delta_x**2 + delta_y**2)
-    return tot_dist_pixels
+    return length/tot_dist_pixels
 
 def get_data_from_file(folder):
     data = open("data/" + folder + "/data.ascii")
@@ -57,3 +81,15 @@ def get_length(folder):
     length = float(length_file.readline())
     length_file.close()
     return length
+
+def noise_supression(vel, steps): # depens on a velocity set that is big
+    suppresed_vel = []
+    i = steps
+    for j in range(len(vel) - steps*2):
+        vel_tot = vel[i][1]
+        for k in range(steps):
+            vel_tot += vel[i-k-1][1]
+            vel_tot += vel[i+k+1][1]
+        suppresed_vel.append([vel[i][0], vel_tot/(steps + 1)])
+        i+=1
+    return suppresed_vel
