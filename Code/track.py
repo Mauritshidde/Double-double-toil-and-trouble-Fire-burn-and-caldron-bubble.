@@ -1,3 +1,9 @@
+'''
+Code for reading the data from data file from the measurements
+The functions in this file should be imported into another file and not used in this file
+The functions are for translating the movemend in the x and y direction to a general direction up,
+because the camera isn't always straight. And calculating the velocity of the object in pixels per second
+'''
 import math as m
 import matplotlib.pyplot as plt
 
@@ -51,26 +57,3 @@ def get_length(folder):
     length = float(length_file.readline())
     length_file.close()
     return length
-
-# length = get_length("Meting 1")
-# data = get_data_from_file("Meting 1")
-# vel = get_pixels_per_second(data)
-# pm = get_cm_per_pixel(data)
-
-# print(vel[0][1] * pm, " cm per seconde")
-#
-# for i in vel:
-#     print(i)
-# time = []
-# speed = []
-#
-# for i in range(len(vel)):
-#     time.append((vel[i][0][1] + vel[i][0][0])/2)
-#     speed.append(vel[i][1])
-#
-# for i in range(4):
-#     print(speed[i])
-#
-# plt.plot(time, speed)
-# plt.show()
-# start calculating
