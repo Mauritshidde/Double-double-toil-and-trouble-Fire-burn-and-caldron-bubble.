@@ -47,13 +47,23 @@ def get_pixels_per_second_suppresed(pos, steps):
 def get_distance_per_time_suppresed(pos, steps):
     velocities = []
     i = steps
-    for j in range(len(pos) - 1 - 2 * steps):
+    for j in range(len(pos) - 2 - 2 * (steps-1)):
         delta_y = abs(pos[i-steps][2] - pos[i+steps][2])
         delta_x = abs(pos[i-steps][1] - pos[i+steps][1])
         delta_t = pos[i-steps][0] + pos[i+steps][0]
         distance = m.sqrt(delta_x**2 + delta_y**2)
         velocities.append([delta_t/2, distance])
         i+=1
+    return velocities
+
+def get_distance_per_time(pos):
+    velocities = []
+    for i in range(len(pos) - 1):
+        delta_y = abs(pos[i+1][2] - pos[i][2])
+        delta_x = abs(pos[i+1][1] - pos[i][1])
+        delta_t = pos[i+1][0] + pos[i][0]
+        distance = m.sqrt(delta_x**2 + delta_y**2)
+        velocities.append([delta_t/2, distance])
     return velocities
 
 def get_cm_per_pixel(data, length): # calulate how many cm a pixel is
@@ -63,10 +73,10 @@ def get_cm_per_pixel(data, length): # calulate how many cm a pixel is
     return length/tot_dist_pixels
 
 def get_data_from_file(folder):
-    data = open("data/" + folder + "/data.ascii")
+    data = open("data/" + folder + "/data.mqa")
     start = data.readline() # remove first non date line
 
-    length_file = open("data/" + folder + "/lengte.ascii")
+    length_file = open("data/" + folder + "/lengte.mqa")
     start = length_file.readline() # remove first non date line
 
     # get the length and close the file
@@ -76,7 +86,7 @@ def get_data_from_file(folder):
     return get_data_from_file_helper(data)
 
 def get_length(folder):
-    length_file = open("data/" + folder + "/lengte.ascii")
+    length_file = open("data/" + folder + "/lengte.mqa")
     start = length_file.readline()
     length = float(length_file.readline())
     length_file.close()
