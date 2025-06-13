@@ -53,9 +53,25 @@ def get_dist_traveled(data):
     dists = [0]
     time = [0]
     for i in range(len(data) - 1):
-        dist += abs(data[i][2] - data[i+1][2])
+        dist += data[i][2] - data[i+1][2]
         dists.append(dist)
-        time.append(data[i][2])
+        time.append(data[i][0])
+    return dists, time
+ 
+def get_dist_traveled_steps(data):
+    dist = 0
+    dists = [0]
+    time = [0]
+    i = 0
+    while (i < len(data) - 3):
+        dt = abs(data[i][0] -data[i+2][0])
+        # vel = (data[i][2] + data[i+1][2] + data[i+2][2] - 3* dist)/dt
+        
+
+        dist += abs(data[i][2] - data[i+2][2])
+        dists.append(dist)
+        time.append((data[i][2] + data[i+2][2])/2)
+        i += 3
     return dists, time
 
 def dist_in_cm(dist, cmp):

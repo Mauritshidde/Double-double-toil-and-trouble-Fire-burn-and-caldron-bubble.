@@ -3,7 +3,7 @@ import numpy as np
 from lmfit import models
 
 # set the folder to the folder of a measurement.
-folder = 'dag1/Meting 1'
+folder = 'dag1/Meting 3'
 
 # def distance_time_plot(distance, cmp):
 
@@ -23,4 +23,23 @@ plt.show()
 plt.scatter(time, dist_cm, s=1)
 plt.xlabel("tijd in seconden")
 plt.ylabel("afstand in cm")
+plt.show()
+
+def fit_func(x, a, b, c):
+    d = a * x**b + c
+    return d
+
+mod_dist = models.Model(fit_func)
+fit = mod_dist.fit(dist_cm, x=time, a=3, b=2, c=0, weights=np.sqrt(1/np.array([0.5] * len(data))))
+plt.plot(time, fit.best_fit)
+plt.scatter(time, dist_cm, s=1)
+plt.show()
+print(fit.fit_report())
+
+f = fit_func(time, fit.params["a"], fit.params["b"], fit.params["c"])
+print(len(f))
+print(len(dist_cm))
+
+# The residual
+plt.plot(dist_cm-f)
 plt.show()
