@@ -44,9 +44,8 @@ def get_length(folder):
 
 
 def get_cm_per_pixel(data, length): # calulate how many cm a pixel is
-    delta_x = data[0][1] - data[-1][1]
     delta_y = data[0][2] - data[-1][2]
-    tot_dist_pixels = m.sqrt(delta_x**2 + delta_y**2)
+    tot_dist_pixels = abs(delta_y)
     return length/tot_dist_pixels
 
 def get_dist_traveled(data):
@@ -54,7 +53,7 @@ def get_dist_traveled(data):
     dists = [0]
     time = [0]
     for i in range(len(data) - 1):
-        dist += pow(data[i][2] - data[i+1][2], 2)
+        dist += abs(data[i][2] - data[i+1][2])
         dists.append(dist)
         time.append(data[i][2])
     return dists, time
