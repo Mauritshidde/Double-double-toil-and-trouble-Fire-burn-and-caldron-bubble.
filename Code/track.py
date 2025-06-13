@@ -51,7 +51,7 @@ def get_cm_per_pixel(data, length): # calulate how many cm a pixel is
 def get_dist_traveled(data):
     dist = 0
     dists = [0]
-    time = [0]
+    time = [data[1][0]]
     for i in range(len(data) - 1):
         dist += data[i][2] - data[i+1][2]
         dists.append(dist)
