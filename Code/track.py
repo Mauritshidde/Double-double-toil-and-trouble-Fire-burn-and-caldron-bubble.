@@ -103,3 +103,21 @@ def noise_supression(vel, steps): # depens on a velocity set that is big
         suppresed_vel.append([vel[i][0], vel_tot/(steps + 1)])
         i+=1
     return suppresed_vel
+
+def dist_from_O(pos):
+    dist = []
+    for i in pos:
+        d = m.sqrt(pow(i[2], 2) + pow(i[2], 2))
+        dist.append([i[0], d])
+    return dist
+
+def traveled_from_O(dist):
+    distances = [[0, 0]]
+    distance = 0
+    for i in range(len(dist) - 1):
+        d = dist[i][1] - dist[i+1][1]
+        print(d, distance)
+        distance += d
+        time = (dist[i+1][0] + dist[i][0])/2
+        distances.append([time, distance])
+    return distances
