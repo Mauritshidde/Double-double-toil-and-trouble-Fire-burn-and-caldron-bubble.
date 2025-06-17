@@ -11,6 +11,7 @@ def get_data_from_file_helper(d): # Data from file
     x = d.readline()
     raw_data = []
     while x:
+        print(len(raw_data))
         data = x.split(",")
         # turn the strings into floats
         data[1] = float(data[1])

@@ -3,7 +3,7 @@ import numpy as np
 from lmfit import models
 
 # set the folder to the folder of a measurement.
-folder = 'dag 2/01_cillinder_5'
+folder = 'dag 3/02_tetraederpiek_12cm'
 
 # def distance_time_plot(distance, cmp):
 
