@@ -1,0 +1,60 @@
+groter dan wortel
+
+[[Model]]
+    Model(fit_func)
+[[Fit Statistics]]
+    # fitting method   = leastsq
+    # function evals   = 140
+    # data points      = 2994
+    # variables        = 3
+    chi-square         = 526.695808
+    reduced chi-square = 0.17609355
+    Akaike info crit   = -5196.80074
+    Bayesian info crit = -5178.78764
+    R-squared          = 0.99796125
+[[Variables]]
+    a:  1.28603186 +/- 0.01451110 (1.13%) (init = 3)
+    b:  0.58876589 +/- 0.00178404 (0.30%) (init = 2)
+    c: -2.41589823 +/- 0.05519236 (2.28%) (init = 0)
+[[Correlations]] (unreported correlations are < 0.100)
+    C(a, b) = -0.9973
+    C(a, c) = -0.9502
+    C(b, c) = +0.9273
+
+lin fit
+[[Model]]
+    Model(lin_fit_func)
+[[Fit Statistics]]
+    # fitting method   = leastsq
+    # function evals   = 7
+    # data points      = 2994
+    # variables        = 2
+    chi-square         = 1509270.52
+    reduced chi-square = 504.435334
+    Akaike info crit   = 18634.9777
+    Bayesian info crit = 18646.9864
+    R-squared          = 0.99599751
+[[Variables]]
+    a:  4.09777013 +/- 0.00474900 (0.12%) (init = 2)
+    b: -93.9085464 +/- 0.82030439 (0.87%) (init = 3)
+[[Correlations]] (unreported correlations are < 0.100)
+    C(a, b) = -0.8658
+
+lin fit met at fit 
+[[Model]]
+    Model(lin_fit_func)
+[[Fit Statistics]]
+    # fitting method   = leastsq
+    # function evals   = 7
+    # data points      = 2994
+    # variables        = 2
+    chi-square         = 2612192.78
+    reduced chi-square = 873.059086
+    Akaike info crit   = 20277.3770
+    Bayesian info crit = 20289.3857
+    R-squared          = 0.99321238
+[[Variables]]
+    a:  4.13394571 +/- 0.00624772 (0.15%) (init = 2)
+    b: -99.4945981 +/- 1.07918053 (1.08%) (init = 3)
+[[Correlations]] (unreported correlations are < 0.100)
+    C(a, b) = -0.8658

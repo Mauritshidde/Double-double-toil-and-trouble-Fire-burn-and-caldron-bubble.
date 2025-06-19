@@ -3,7 +3,7 @@ import numpy as np
 from lmfit import models
 
 # set the folder to the folder of a measurement.
-folder = '18jun/07_pil3_34cm'
+folder = '18jun/13_pil5_32cm'
 
 # def distance_time_plot(distance, cmp):
 
@@ -77,8 +77,18 @@ lin_mod = models.Model(lin_fit_func)
 lin_fit = lin_mod.fit(dist_sqr_cm, x=time, a=2, b=3)
 
 #lin fit plot
-d = plt.plot(time, lin_fit.best_fit, label=['y = ax + b', 'a='+str(float(fit.params["a"])), 'b='+str(float(fit.params["b"]))])
+d = plt.plot(time, lin_fit.best_fit, label=['y = ax + b', 'a='+str(float(lin_fit.params["a"])), 'b='+str(float(lin_fit.params["b"]))])
 plt.scatter(time, dist_sqr_cm, s=1)
 plt.legend(handles=d, loc='upper right')
 plt.show()
 print(lin_fit.fit_report())
+
+#lin fit van fit
+lin_fitmod = models.Model(lin_fit_func)
+lin_fitfit = lin_fitmod.fit(fit.best_fit * fit.best_fit, x=time, a=2, b=3)
+
+d = plt.plot(time, lin_fitfit.best_fit, label=['y = ax + b', 'a='+str(float(lin_fitfit.params["a"])), 'b='+str(float(lin_fitfit.params["b"]))])
+plt.scatter(time, fit.best_fit * fit.best_fit, s=1)
+plt.legend(handles=d, loc='upper right')
+plt.show()
+print(lin_fitfit.fit_report())

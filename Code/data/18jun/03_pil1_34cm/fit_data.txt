@@ -1,0 +1,62 @@
+deze fit komt heel erg dichtbij een wortel en bij een hoge waardeis deze zo goed als lineair
+
+wortel fit
+[[Model]]
+    Model(fit_func)
+[[Fit Statistics]]
+    # fitting method   = leastsq
+    # function evals   = 120
+    # data points      = 3068
+    # variables        = 3
+    chi-square         = 1114.16449
+    reduced chi-square = 0.36351207
+    Akaike info crit   = -3101.64193
+    Bayesian info crit = -3083.55559
+    R-squared          = 0.99584756
+[[Variables]]
+    a:  1.96110346 +/- 0.03007734 (1.53%) (init = 3)
+    b:  0.52156373 +/- 0.00235562 (0.45%) (init = 2)
+    c: -4.06397170 +/- 0.09125083 (2.25%) (init = 0)
+[[Correlations]] (unreported correlations are < 0.100)
+    C(a, b) = -0.9971
+    C(a, c) = -0.9598
+    C(b, c) = +0.9377
+
+
+lineair fit
+[[Model]]
+    Model(lin_fit_func)
+[[Fit Statistics]]
+    # fitting method   = leastsq
+    # function evals   = 7
+    # data points      = 3068
+    # variables        = 2
+    chi-square         = 889150.264
+    reduced chi-square = 290.003348
+    Akaike info crit   = 17397.2294
+    Bayesian info crit = 17409.2870
+    R-squared          = 0.99776129
+[[Variables]]
+    a:  4.05784572 +/- 0.00347133 (0.09%) (init = 2)
+    b: -73.8919859 +/- 0.61444040 (0.83%) (init = 3)
+[[Correlations]] (unreported correlations are < 0.100)
+    C(a, b) = -0.8658
+
+lin fit met at fit
+[[Model]]
+    Model(lin_fit_func)
+[[Fit Statistics]]
+    # fitting method   = leastsq
+    # function evals   = 7
+    # data points      = 3068
+    # variables        = 2
+    chi-square         = 1302486.95
+    reduced chi-square = 424.816355
+    Akaike info crit   = 18568.4829
+    Bayesian info crit = 18580.5405
+    R-squared          = 0.99681395
+[[Variables]]
+    a:  4.11492114 +/- 0.00420141 (0.10%) (init = 2)
+    b: -83.0020788 +/- 0.74366762 (0.90%) (init = 3)
+[[Correlations]] (unreported correlations are < 0.100)
+    C(a, b) = -0.8658

@@ -37,3 +37,22 @@ lin fit
     b: -50.0360866 +/- 1.37545144 (2.75%) (init = 3)
 [[Correlations]] (unreported correlations are < 0.100)
     C(a, b) = -0.8668
+
+lin fit met at fit
+[[Model]]
+    Model(lin_fit_func)
+[[Fit Statistics]]
+    # fitting method   = leastsq
+    # function evals   = 7
+    # data points      = 2635
+    # variables        = 2
+    chi-square         = 288678.679
+    reduced chi-square = 109.638693
+    Akaike info crit   = 12379.0958
+    Bayesian info crit = 12390.8491
+    R-squared          = 0.99924750
+[[Variables]]
+    a:  5.01419620 +/- 0.00268158 (0.05%) (init = 2)
+    b: -63.8702191 +/- 0.40900499 (0.64%) (init = 3)
+[[Correlations]] (unreported correlations are < 0.100)
+    C(a, b) = -0.8668
