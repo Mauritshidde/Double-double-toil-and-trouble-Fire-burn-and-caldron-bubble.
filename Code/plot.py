@@ -3,7 +3,7 @@ import numpy as np
 from lmfit import models
 
 # set the folder to the folder of a measurement.
-folder = '18jun/03_pil1_34cm'
+folder = '18jun/13_pil5_32cm'
 
 # def distance_time_plot(distance, cmp):
 
@@ -96,107 +96,18 @@ lin_mod = models.Model(lin_fit_func)
 lin_fit = lin_mod.fit(dist_sqr_cm, x=time, a=2, b=3)
 
 #lin fit plot
-d = plt.plot(time, lin_fit.best_fit, label=['y = ax + b', 'a='+str(float(fit.params["a"])), 'b='+str(float(fit.params["b"]))])
+d = plt.plot(time, lin_fit.best_fit, label=['y = ax + b', 'a='+str(float(lin_fit.params["a"])), 'b='+str(float(lin_fit.params["b"]))])
 plt.scatter(time, dist_sqr_cm, s=1)
 plt.legend(handles=d, loc='upper right')
 plt.show()
 print(lin_fit.fit_report())
 
-## ========== NIEUW ========== ##
+#lin fit van fit
+lin_fitmod = models.Model(lin_fit_func)
+lin_fitfit = lin_fitmod.fit(fit.best_fit * fit.best_fit, x=time, a=2, b=3)
 
-# plot data to log log scale
-plt.scatter(time - 1.1, np.array(dist_cm), s=1)
-plt.xscale('log')
-plt.yscale('log')
-plt.xlabel("tijd in seconden (log(s))")
-plt.ylabel("afstand in cm (log(cm))")
-plt.title("Log-Log Scatterplot")
-plt.show()
-
-# fit function for log-log scale
-def log_log_fit_func(x, a, b):
-    d = a * x**b
-    return d
-
-# fit model for log-log scale
-log_mod = models.Model(log_log_fit_func)
-log_fit = log_mod.fit(dist_cm, x=time, a=0.5, b=1.0)
-
-# Plot the fit and data in log-log scale
-d = plt.plot(time, log_fit.best_fit, label=['y = ax^b', 'a='+str(float(log_fit.params["a"])), 'b='+str(float(log_fit.params["b"]))], color='red')
-plt.scatter(time - 1.1, np.array(dist_cm), s=1)
+d = plt.plot(time, lin_fitfit.best_fit, label=['y = ax + b', 'a='+str(float(lin_fitfit.params["a"])), 'b='+str(float(lin_fitfit.params["b"]))])
+plt.scatter(time, fit.best_fit * fit.best_fit, s=1)
 plt.legend(handles=d, loc='upper right')
-import matplotlib.pyplot as plt
-plt.xscale('log')
-plt.yscale('log')
-plt.xlabel("tijd in seconden (log(s))")
-plt.ylabel("afstand in cm (log(cm))")
-plt.title("Log-Log Fit all Data")
 plt.show()
-print(log_fit.fit_report())
-
-# log-log fit plot
-# Select data in the x-interval from 1 to 100
-mask = (time >= 1) & (time <= 100)
-time_fit = time[mask]
-dist_cm_fit = np.array(dist_cm)[mask]
-
-# Fit only to the selected interval
-log_fit = log_mod.fit(dist_cm_fit, x=time_fit, a=0.5, b=1.0)
-
-# Plot fit and data in the selected interval
-d_log = plt.plot(time_fit, log_fit.best_fit, label=['y = ax^b', 'a='+str(float(log_fit.params["a"])), 'b='+str(float(log_fit.params["b"]))], color='red')
-plt.scatter(time - 1.1, np.array(dist_cm), s=1)
-plt.legend(handles=d_log, loc='upper right')
-plt.xscale('log')
-plt.yscale('log')
-plt.xlabel("tijd in seconden (log(s))")
-plt.ylabel("afstand in cm (log(cm))")
-plt.title("Log-Log Fit in Selected Interval")
-plt.show()
-print(log_fit.fit_report())
-
-# gebruik de laatste fit om de waarde van a en b te bepalen in normale plot
-a = float(log_fit.params["a"])
-b = float(log_fit.params["b"])
-# Plot the data with the fitted line
-plt.scatter(time, dist_cm, s=1)
-plt.plot(time, a * time**b, color='red', label=f'Fit: y = {a:.2f} * x^{b:.2f}')
-plt.xlabel("tijd in seconden")
-plt.ylabel("afstand in cm")
-plt.title("lijn gefit via logspace op 1<x<100")
-plt.legend()
-plt.show()
-
-# log-log fit plot
-# Select data in the x-interval from 100 to 1000
-mask = (time >= 100) & (time <= 1000)
-time_fit = time[mask]
-dist_cm_fit = np.array(dist_cm)[mask]
-
-# Fit only to the selected interval
-log_fit = log_mod.fit(dist_cm_fit, x=time_fit, a=0.5, b=1.0)
-
-# Plot fit and data in the selected interval
-d_log = plt.plot(time_fit, log_fit.best_fit, label=['y = ax^b', 'a='+str(float(log_fit.params["a"])), 'b='+str(float(log_fit.params["b"]))], color='red')
-plt.scatter(time - 1.1, np.array(dist_cm), s=1)
-plt.legend(handles=d_log, loc='upper right')
-plt.xscale('log')
-plt.yscale('log')
-plt.xlabel("tijd in seconden (log(s))")
-plt.ylabel("afstand in cm (log(cm))")
-plt.title("Log-Log Fit in Selected Interval")
-plt.show()
-print(log_fit.fit_report())
-
-# gebruik de laatste fit om de waarde van a en b te bepalen in normale plot
-a = float(log_fit.params["a"])
-b = float(log_fit.params["b"])
-# Plot the data with the fitted line
-plt.scatter(time, dist_cm, s=1)
-plt.plot(time, a * time**b, color='red', label=f'Fit: y = {a:.2f} * x^{b:.2f}')
-plt.xlabel("tijd in seconden")
-plt.ylabel("afstand in cm")
-plt.title("lijn gefit via logspace op 100<x<1000")
-plt.legend()
-plt.show()
+print(lin_fitfit.fit_report())
