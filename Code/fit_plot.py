@@ -21,7 +21,6 @@ while x:
     x = d.readline()
 d.close() # close the data file
 
-
 pil_size = []
 pil_a = []
 pil_a_err = []
