@@ -1,0 +1,4 @@
+results for a for the fits 
+[0.80586715, 5.5600e-04, 34, verticale elipps]
+[1.82420729, 8.6652e-04, 34, verticale elipps2]
+[0.66821634, 2.1470e-04, 34, verticale elipps2]
