@@ -1,0 +1,3 @@
+Deze meting wijkt erg af van de andere metingen de residual heeft een grotere flucuatie en geen 
+van de fits lijken goed te passen bij de daad werkeklijke functie.
+De lineaire fit gaat nauwelijks door de lijn.
