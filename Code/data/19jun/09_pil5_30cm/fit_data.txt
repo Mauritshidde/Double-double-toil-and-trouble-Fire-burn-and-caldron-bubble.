@@ -1,0 +1,96 @@
+
+ at plot 
+ 
+[[Model]]
+    Model(fit_func)
+[[Fit Statistics]]
+    # fitting method   = leastsq
+    # function evals   = 134
+    # data points      = 4815
+    # variables        = 3
+    chi-square         = 3258.91672
+    reduced chi-square = 0.67724786
+    Akaike info crit   = -1873.49287
+    Bayesian info crit = -1854.05440
+    R-squared          = 0.99188878
+[[Variables]]
+    a:  0.64434114 +/- 0.01283870 (1.99%) (init = 3)
+    b:  0.64701012 +/- 0.00297746 (0.46%) (init = 2)
+    c: -3.52808082 +/- 0.07638825 (2.17%) (init = 0)
+[[Correlations]] (unreported correlations are < 0.100)
+    C(a, b) = -0.9979
+    C(a, c) = -0.9405
+    C(b, c) = +0.9187
+ at plot zonder c 
+ 
+[[Model]]
+    Model(fit_func_no_c)
+[[Fit Statistics]]
+    # fitting method   = leastsq
+    # function evals   = 58
+    # data points      = 4815
+    # variables        = 2
+    chi-square         = 5319.88343
+    reduced chi-square = 1.10531548
+    Akaike info crit   = 484.129391
+    Bayesian info crit = 497.088373
+    R-squared          = 0.98675917
+[[Variables]]
+    a:  0.24317484 +/- 0.00276723 (1.14%) (init = 3)
+    b:  0.79014327 +/- 0.00196124 (0.25%) (init = 0.5)
+[[Correlations]] (unreported correlations are < 0.100)
+    C(a, b) = -0.9978
+ lin fit 
+ 
+[[Model]]
+    Model(lin_fit_func)
+[[Fit Statistics]]
+    # fitting method   = leastsq
+    # function evals   = 7
+    # data points      = 4815
+    # variables        = 2
+    chi-square         = 4201285.99
+    reduced chi-square = 872.903800
+    Akaike info crit   = 32608.3387
+    Bayesian info crit = 32621.2977
+    R-squared          = 0.99010144
+[[Variables]]
+    a:  2.12530151 +/- 0.00306308 (0.14%) (init = 2)
+    b: -112.962683 +/- 0.85114953 (0.75%) (init = 3)
+[[Correlations]] (unreported correlations are < 0.100)
+    C(a, b) = -0.8659
+ lin fit met at fit 
+ 
+[[Model]]
+    Model(lin_fit_func)
+[[Fit Statistics]]
+    # fitting method   = leastsq
+    # function evals   = 7
+    # data points      = 4815
+    # variables        = 2
+    chi-square         = 8136795.26
+    reduced chi-square = 1690.58701
+    Akaike info crit   = 35791.0813
+    Bayesian info crit = 35804.0403
+    R-squared          = 0.98167251
+[[Variables]]
+    a:  2.16438289 +/- 0.00426279 (0.20%) (init = 2)
+    b: -123.042757 +/- 1.18451737 (0.96%) (init = 3)
+[[Correlations]] (unreported correlations are < 0.100)
+    C(a, b) = -0.8659
+ lin fit zonder b 
+ 
+[[Model]]
+    Model(lin_fit_func2)
+[[Fit Statistics]]
+    # fitting method   = leastsq
+    # function evals   = 5
+    # data points      = 4815
+    # variables        = 1
+    chi-square         = 19576623.6
+    reduced chi-square = 4066.60233
+    Akaike info crit   = 40016.3613
+    Bayesian info crit = 40022.8408
+    R-squared          = 0.95387593
+[[Variables]]
+    a:  1.77329651 +/- 0.00330728 (0.19%) (init = 2)
