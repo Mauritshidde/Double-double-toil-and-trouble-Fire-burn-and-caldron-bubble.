@@ -56,7 +56,7 @@ class wortel_fit(Scene):
             axis_config = {"include_tip": True},
         )
         axes.add_coordinates()
-        axes.scale(0.6).to_edge(DOWN)
+        axes.scale(0.3).to_edge(LEFT)
 
         self.play(Create(axes))
         a = 1.33
@@ -68,6 +68,7 @@ class wortel_fit(Scene):
         self.play(Write(graph))
 
         label = axes.get_graph_label(graph, label="y = "+str(a)+"x^{"+str(b)+"}", color=RED)
+        label.to_edge(LEFT)
         self.play(Write(label))   
 
         self.wait(2)
