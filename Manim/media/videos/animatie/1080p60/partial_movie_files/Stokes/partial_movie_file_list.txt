@@ -1,0 +1,6 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/Mauri/Downloads/Double-double-toil-and-trouble-Fire-burn-and-caldron-bubble/Manim/media/videos/animatie/1080p60/partial_movie_files/Stokes/3977891868_2512150044_223132457.mp4'
+file 'file:C:/Users/Mauri/Downloads/Double-double-toil-and-trouble-Fire-burn-and-caldron-bubble/Manim/media/videos/animatie/1080p60/partial_movie_files/Stokes/2852726489_1734327179_1067420466.mp4'
+file 'file:C:/Users/Mauri/Downloads/Double-double-toil-and-trouble-Fire-burn-and-caldron-bubble/Manim/media/videos/animatie/1080p60/partial_movie_files/Stokes/2852726489_508190136_1488349618.mp4'
+file 'file:C:/Users/Mauri/Downloads/Double-double-toil-and-trouble-Fire-burn-and-caldron-bubble/Manim/media/videos/animatie/1080p60/partial_movie_files/Stokes/2852726489_3518870358_1488349618.mp4'
+file 'file:C:/Users/Mauri/Downloads/Double-double-toil-and-trouble-Fire-burn-and-caldron-bubble/Manim/media/videos/animatie/1080p60/partial_movie_files/Stokes/2852726489_1839128356_210259938.mp4'

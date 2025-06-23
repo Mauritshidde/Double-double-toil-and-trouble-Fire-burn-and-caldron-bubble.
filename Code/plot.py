@@ -3,8 +3,8 @@ import numpy as np
 from lmfit import models
 
 # set the folder to the folder of a measurement.
-folder = '19jun/09_pil5_30cm'
-folder2 = 'data/19jun/09_pil5_30cm'
+folder = '20jun/06_pil5_30cm'
+folder2 = 'data/20jun/06_pil5_30cm'
 # def distance_time_plot(distance, cmp):
 file = open(folder2 + "/fit_data.txt", "w")
 
