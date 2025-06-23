@@ -5,10 +5,10 @@ import json
 
 # set the folder to the folder of a measurement.
 folders = {
-    '17jun': ['01_tetraederbodem_10cm', '02_tetraederpiek_12cm', '04_Cilinder5_8cm'],
-    '18jun': ['01_bol_34cm', '02_pil1_34cm', '03_pil1_34cm', '04_pil1_34cm', '05_bol_34cm', '06_pil2_34cm', '07_pil3_34cm', '08_pil2_42cm', '09_pil3_34cm', '10_pil3_42cm', '11_pil4_34cm', '12_pil4_42cm', '13_pil5_32cm'],
+    # '17jun': ['01_tetraederbodem_10cm', '02_tetraederpiek_12cm', '04_Cilinder5_8cm'],
+    # '18jun': ['01_bol_34cm', '02_pil1_34cm', '03_pil1_34cm', '04_pil1_34cm', '05_bol_34cm', '06_pil2_34cm', '07_pil3_34cm', '08_pil2_42cm', '09_pil3_34cm', '10_pil3_42cm', '11_pil4_34cm', '12_pil4_42cm', '13_pil5_32cm'],
     '19jun': ['01_verticaleellips_34cm', '02_verticaleellips2_34cm', '03_verticaleellips2_34cm', '04_pil1_30cm', '05_pil1_30cm', '06_pil2_30cm', '07_pil3_30cm', '08_pil4_30cm', '09_pil5_30cm'],
-    # '20jun': ['01_bol_30cm', '02_pil1_30cm', '03_pil2_30cm', '04_pil3_30cm', '05_pil4_30cm', '06_pil5_30cm']
+    '20jun': ['01_bol_30cm', '02_pil1_30cm', '03_pil2_30cm', '04_pil3_30cm', '05_pil4_30cm', '06_pil5_30cm']
 }
 
 # # get start values
@@ -51,10 +51,6 @@ def get_fit_data(folder):
 
     return fit_data
 
-# def to_json(data):
-    
-#     for i in data:
-        
 def remove_cm(number):
     result = ''
     print(number)
@@ -104,7 +100,7 @@ def pil_data():
             if i.get("object") == "bol":
                 length = 0
             else:
-                length = i.get("object")[3]
+                length = float(i.get("object")[3])
 
             i['object_length'] = length
             size = i.get("length")
@@ -123,10 +119,24 @@ def plot_lin_fit():
     for i in data:
         vals.append(i.get('fit2'))
         pill_size.append(i.get('object_length'))
+    
+    vals_1 = []
+    pill_size_1 = []
+    vals_2 = []
+    pill_size_2 = []
+    for i in range(6):
+        vals_1.append(vals[i])
+        pill_size_1.append(pill_size[i] + 2*m.sqrt(10/m.pi))
 
-    plt.scatter(pill_size, vals)
-    plt.xlabel("lengte van pil")
-    plt.ylabel("zinksnelheid van de indringer")
+    for i in range(6):
+        vals_2.append(vals[i+6])
+        pill_size_2.append(pill_size[i+6] + 2*m.sqrt(10/m.pi))
+
+    plt.scatter(pill_size_1, vals_1, color='RED', label='100 Pa')
+    plt.scatter(pill_size_2, vals_2, color='BLUE', label='125 Pa')
+    plt.xlabel("lengte van de pil in cm")
+    plt.ylabel("D_0, de zinksnelheid van de indringer in cm^2 * s^-1")
+    plt.legend()
     plt.show()
 
 option = int(input("Press 1 to create a json file with all the fit results, press 2 to filter out all the non pill data, 3 for lin fit van pillen, press 4 to do all: "))
