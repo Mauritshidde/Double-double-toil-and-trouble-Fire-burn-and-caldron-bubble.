@@ -87,6 +87,8 @@ file.writelines(fit.fit_report())
 d_no_c = plt.plot(time, fit_no_c.best_fit, label=['y = ax^b', 'a='+str(float(fit_no_c.params["a"])), 'b='+str(float(fit_no_c.params["b"]))])
 plt.scatter(time, dist_cm, s=1)
 plt.legend(handles=d_no_c, loc='upper right')
+plt.xlabel("tijd in seconden")
+plt.ylabel("afstand in cm")
 plt.show()
 print(fit_no_c.fit_report())
 # with open(folder2 + "/fit_data.txt", "w") as f:
