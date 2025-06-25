@@ -3,8 +3,8 @@ import numpy as np
 from lmfit import models
 
 # set the folder to the folder of a measurement.
-folder = '20jun/06_pil5_30cm'
-folder2 = 'data/20jun/06_pil5_30cm'
+folder = '19jun/05_pil1_30cm'
+folder2 = 'data/19jun/05_pil1_30cm'
 # def distance_time_plot(distance, cmp):
 file = open(folder2 + "/fit_data.txt", "w")
 
@@ -32,8 +32,8 @@ def fit_func(x, a, b, c):
     return d
 
 ## zonder c
-def fit_func_no_c(x, a, b):
-    d = a * x**b
+def fit_func_no_c(x, a):
+    d = a * x**0.5
     return d
 ##
 
@@ -46,7 +46,7 @@ fit = mod_dist.fit(dist_cm, x=time, a=3, b=2, c=0)
 
 ## zonder c
 mod_dist_no_c = models.Model(fit_func_no_c)
-fit_no_c = mod_dist_no_c.fit(dist_cm, x=time, a=3, b=0.5)
+fit_no_c = mod_dist_no_c.fit(dist_cm, x=time, a=3)
 ##
 
 # plot data to log log scale
@@ -68,6 +68,7 @@ log_mod = models.Model(log_log_fit_func)
 log_fit = log_mod.fit(dist_cm, x=time, a=0.5, b=1.0)
 
 # Plot the fit and data in log-log scale
+print("jaaaaaaaaaaaaaaaaaaaaneeeeeeeeeeee")
 d = plt.plot(time, log_fit.best_fit, label=['y = ax^b', 'a='+str(float(log_fit.params["a"])), 'b='+str(float(log_fit.params["b"]))], color='red')
 plt.scatter(time - 1.1, np.array(dist_cm), s=1)
 plt.show()
@@ -83,10 +84,11 @@ file.write("\n at plot \n \n")
 file.writelines(fit.fit_report())
 
 
+print("jaaaaaaaaaaaaaaaaa")
 # fit plot zonder c
-d_no_c = plt.plot(time, fit_no_c.best_fit, label=['y = ax^b', 'a='+str(float(fit_no_c.params["a"])), 'b='+str(float(fit_no_c.params["b"]))])
+d_no_c = plt.plot(time, fit_no_c.best_fit, label=['y = ax^0.5', 'a='+str(round(float(fit_no_c.params["a"]), 3))], color='RED')
 plt.scatter(time, dist_cm, s=1)
-plt.legend(handles=d_no_c, loc='upper right')
+plt.legend(handles=d_no_c, loc='upper left')
 plt.xlabel("tijd in seconden")
 plt.ylabel("afstand in cm")
 plt.show()
